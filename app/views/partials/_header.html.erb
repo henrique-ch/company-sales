@@ -1,0 +1,33 @@
+</head>
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Teste técnico Back end</h5>
+      <span class="text-muted">Nuuvem</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div style="position: absolute; left: 100px; padding: 10px; display: flex;">
+        <a class="navbar-toggler" href="/">
+          Home
+        </a>
+        <a class="navbar-toggler" href="/purchaser/index">
+          Purchaser
+        </a>
+        <a class="navbar-toggler"  href="/itens/index">
+          Itens
+        </a>
+        <a class="navbar-toggler"  href="/merchant/index">
+          Merchant
+        </a>
+      </div>
+      <div>
+        <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+        <%= image_tag current_user.image, style: "border-radius: 50%;", size: "45x45" unless current_user.image.blank? %>
+      </div>
+    </div>
+  </nav>
+</head>

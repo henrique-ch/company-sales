@@ -1,0 +1,23 @@
+<%= render "partials/header" %>
+<%= render "partials/observacao" %>
+
+<h1>Lista de Comerciantes</h1>
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Comerciante</th>
+      <th scope="col">Endereço</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @merchants.each do |merchant| %>
+    <tr>
+      <td><%= merchant.id %></td>
+      <td><%= merchant.name %></td>
+      <td><%= merchant.address %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,20 +1,61 @@
-<div class="pos-f-t">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+<% flash.each do |key, value| %>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= value %>
+  </div>
+<% end %>
+
+<%= render "partials/header" %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="mb-3">
+       <label for="formFile" class="form-label">Faça upload do arquivo.</label>
+      <%= form_with(url: upload_path, method: :post, multipart: true) do |form| %>
+        <%= form.file_field :file_field_name, :required => true %>
+        <%= form.submit "Carregar", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
-  <nav class="navbar navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
 </div>
 
-<form>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Example file input</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-</form>
+<h4>Lista de Uploads</h4>
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Arquivo</th>
+      <th scope="col">Receita Bruta</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @uploads.empty?%>
+    <h4>Nenhum registro de upload encontrado</h4>
+  <% end %>
+  <% @uploads.each do |upload| %>
+    <tr>
+      <th scope="row"><%= upload.id %></th>
+      <td><%= upload.nome %></td>
+      <td><%= number_to_currency(upload.receita_bruta, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr style="background-color: green;">
+      <td colspan="2">
+        <i class="label-danger">
+          Receita Bruta Total:
+        </i>
+      </td>
+      <td><%= number_to_currency(@uploads&.take&.receita_bruta_total, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <%= paginate @uploads  %>
+  </ul>
+</nav>

@@ -1,0 +1,11 @@
+<%= render "partials/header" %>
+<%= render "partials/observacao" %>
+
+<h1>Lista de Compradores</h1>
+<ul>
+  <% @purchaser.each do |p| %>
+    <li>
+      <%= link_to p.name %>
+    </li>
+  <% end %>
+</ul>
