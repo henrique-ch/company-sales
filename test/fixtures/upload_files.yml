@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  upload_at: 2023-01-24 21:14:31
+  receita_bruta: MyString
+
+two:
+  nome: MyString
+  upload_at: 2023-01-24 21:14:31
+  receita_bruta: MyString
