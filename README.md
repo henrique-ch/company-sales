@@ -1,4 +1,6 @@
-# Challenge Dev RoR Nuuvem
+# Company-sales
+
+Um analisador de vendas aceita uploads de arquivos de texto (separados por tabulações).
 
 ## Requirements
 
